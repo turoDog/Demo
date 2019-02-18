@@ -2,6 +2,7 @@ package com.nasus.controller;
 
 import com.nasus.entity.Student;
 import com.nasus.service.StudentService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -32,11 +33,14 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @RestController
 @RequestMapping("/student")
+// @Api：修饰整个类，描述Controller的作用
+@Api("StudentController Api 接口文档")
 public class StudentController {
 
     @Autowired
     private StudentService studentService;
 
+    // @ApiOperation：描述一个类的一个方法，或者说一个接口
     @ApiOperation(value="获取所有学生列表", notes="获取所有学生列表")
     @RequestMapping(value={""}, method= RequestMethod.GET)
     public List<Student> getStudent() {
@@ -45,7 +49,8 @@ public class StudentController {
     }
 
     @ApiOperation(value="添加学生信息", notes="添加学生信息")
-    @ApiImplicitParam(name = "student", value = "学生信息详细实体", required = true, dataType = "Student")
+    // @ApiImplicitParam：一个请求参数
+    @ApiImplicitParam(name = "student", value = "学生信息详细实体", required = true, dataType = "Student", paramType = "body")
     @PostMapping("/save")
     public Student save(@RequestBody Student student){
         return studentService.save(student);
@@ -67,6 +72,7 @@ public class StudentController {
     }
 
     @ApiOperation(value="更新学生信息", notes="根据url的id来指定更新学生信息")
+    // @ApiImplicitParams：多个请求参数
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "学生ID", required = true, dataType = "Integer",paramType = "path"),
             @ApiImplicitParam(name = "student", value = "学生实体student", required = true, dataType = "Student")
@@ -81,7 +87,8 @@ public class StudentController {
         return "success";
     }
 
-    @ApiIgnore//使用该注解忽略这个API
+    // 使用该注解忽略这个API
+    @ApiIgnore
     @RequestMapping(value = "/hi", method = RequestMethod.GET)
     public String  jsonTest() {
         return " hi you!";
