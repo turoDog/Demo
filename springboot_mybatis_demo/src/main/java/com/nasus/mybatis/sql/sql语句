@@ -1,0 +1,11 @@
+-- create table `student`
+# DROP TABLE `student` IF EXISTS
+CREATE TABLE `student` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `age` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+INSERT INTO `student` VALUES ('1', 'aaa', '21');
+INSERT INTO `student` VALUES ('2', 'bbb', '22');
+INSERT INTO `student` VALUES ('3', 'ccc', '23');
