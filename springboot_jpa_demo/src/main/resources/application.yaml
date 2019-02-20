@@ -8,7 +8,5 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update   #ddl-auto:设为update 表示每次都重新建表
+      ddl-auto: update   #ddl-auto:设为 create 表示每次都重新建表
     show-sql: true
-
-
