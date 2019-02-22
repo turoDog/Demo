@@ -46,11 +46,11 @@ public class StudentServiceImpl implements StudentService {
     // @CacheEvict 从缓存 student 中删除 key 为 id 的数据
     public void deleteStudentById(Integer id) {
         LOGGER.info("删除了id、key 为{}的数据缓存", id);
-        studentRepository.deleteById(id);
+        //studentRepository.deleteById(id);
     }
 
     @Override
-    @Cacheable(value = "student",key = "id")
+    @Cacheable(value = "student",key = "#id")
     // @Cacheable 缓存 key 为 id 的数据到缓存 student 中
     public Student findStudentById(Integer id) {
         Student s = studentRepository.findById(id).get();
