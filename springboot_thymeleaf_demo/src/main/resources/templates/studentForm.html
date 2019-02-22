@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>学生信息管理系统</title>
+    <style>
+        .center {
+            text-align:center;
+        }
+        table,td,th
+        {
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+<div class="contentDiv">
+
+    <h2 class="center"> 学生信息管理系统 </h2>
+
+    <legend>
+        <strong class="center">注册学生信息</strong>
+    </legend>
+
+    <form th:action="@{/student/{action}(action=${action})}" method="post" class="form-horizontal">
+
+        <div class="form-group">
+            <label for="student_Id" class="col-sm-2 control-label">学号:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="student_Id" name="name" th:value="${student.studentId}"
+                       th:field="*{student.studentId}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="student_name" class="col-sm-2 control-label">姓名:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="student_name" name="name" th:value="${student.name}"
+                       th:field="*{student.name}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="student_age" class="col-sm-2 control-label">年龄:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="student_age" name="name" th:value="${student.age}"
+                       th:field="*{student.age}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="student_major" class="col-sm-2 control-label">专业:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="student_major" name="name" th:value="${student.major}"
+                       th:field="*{student.major}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="student_dormitory" class="col-sm-2 control-label">宿舍:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="student_dormitory" name="name" th:value="${student.dormitory}"
+                       th:field="*{student.dormitory}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="student_city" class="col-sm-2 control-label">籍贯:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="student_city" name="writer" th:value="${student.city}"
+                       th:field="*{student.city}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-10">
+                <input class="btn btn-primary" type="submit" value="提交"/>&nbsp;&nbsp;
+                <input class="btn" type="button" value="返回" onclick="history.back()"/>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

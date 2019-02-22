@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>学生信息管理系统</title>
+    <style>
+        .center {
+            text-align:center;
+        }
+        table,td,th
+        {
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contentDiv">
+
+    <h2 class="center"> 学生信息管理系统 </h2>
+
+    <table class="table table-hover table-condensed">
+        <legend>
+            <strong>学生信息列表</strong>
+        </legend>
+        <thead>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>专业</th>
+            <th>宿舍</th>
+            <th>籍贯</th>
+            <th>管理</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${studentList}">
+            <th scope="row" th:text="${student.studentId}"></th>
+            <td><a th:href="@{/student/update/{studentId}(studentId=${student.id})}" th:text="${student.name}"></a></td>
+            <td th:text="${student.age}"></td>
+            <td th:text="${student.major}"></td>
+            <td th:text="${student.dormitory}"></td>
+            <td th:text="${student.city}"></td>
+            <td><a class="btn btn-danger" th:href="@{/student/delete/{studentId}(studentId=${student.id})}">删除</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="center"><a class="btn btn-primary" href="/student/create" role="button">注册学生信息</a></div>
+</div>
+
+</body>
+</html>
