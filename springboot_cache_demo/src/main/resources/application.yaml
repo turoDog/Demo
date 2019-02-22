@@ -1,12 +1,12 @@
 spring:
-  # \u6570\u636E\u5E93\u76F8\u5173
+  # 数据库相关
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=true
     username: root
     password: 123456
-  # jpa \u76F8\u5173
+  # jpa 相关
   jpa:
     hibernate:
-      ddl-auto: update   # ddl-auto:\u8BBE\u4E3A create \u8868\u793A\u6BCF\u6B21\u90FD\u91CD\u65B0\u5EFA\u8868
+      ddl-auto: update   # ddl-auto: 设为 create 表示每次都重新建表
     show-sql: true
