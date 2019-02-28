@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nasus.mybatisxml.mapper.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.nasus.mybatisxml.model.Student" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="dormitory" property="dormitory" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="student_id" property="studentId" jdbcType="BIGINT" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, age, city, dormitory, major, name, student_id
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from student
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="com.nasus.mybatisxml.model.Student" >
+    insert into student (id, age, city, 
+      dormitory, major, name, 
+      student_id)
+    values (#{id,jdbcType=BIGINT}, #{age,jdbcType=INTEGER}, #{city,jdbcType=VARCHAR}, 
+      #{dormitory,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{studentId,jdbcType=BIGINT})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.nasus.mybatisxml.model.Student" >
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="dormitory != null" >
+        dormitory,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="studentId != null" >
+        student_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="dormitory != null" >
+        #{dormitory,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.nasus.mybatisxml.model.Student" >
+    update student
+    <set >
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="dormitory != null" >
+        dormitory = #{dormitory,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        student_id = #{studentId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.nasus.mybatisxml.model.Student" >
+    update student
+    set age = #{age,jdbcType=INTEGER},
+      city = #{city,jdbcType=VARCHAR},
+      dormitory = #{dormitory,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      student_id = #{studentId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectStudents" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from student
+  </select>
+</mapper>

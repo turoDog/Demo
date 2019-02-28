@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+    datasource:
+        name: test
+        url: jdbc:mysql://127.0.0.1:3306/test
+        username: root
+        password: 123456
+        # \u4F7F\u7528druid\u6570\u636E\u6E90
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+
+## \u8BE5\u914D\u7F6E\u8282\u70B9\u4E3A\u72EC\u7ACB\u7684\u8282\u70B9\uFF0C\u6709\u5F88\u591A\u540C\u5B66\u5BB9\u6613\u5C06\u8FD9\u4E2A\u914D\u7F6E\u653E\u5728spring\u7684\u8282\u70B9\u4E0B\uFF0C\u5BFC\u81F4\u914D\u7F6E\u65E0\u6CD5\u88AB\u8BC6\u522B
+mybatis:
+  mapper-locations: classpath:mapping/*.xml  #\u6CE8\u610F\uFF1A\u4E00\u5B9A\u8981\u5BF9\u5E94mapper\u6620\u5C04xml\u6587\u4EF6\u7684\u6240\u5728\u8DEF\u5F84
+  type-aliases-package: com.winter.model  # \u6CE8\u610F\uFF1A\u5BF9\u5E94\u5B9E\u4F53\u7C7B\u7684\u8DEF\u5F84
+
+#pagehelper\u5206\u9875\u63D2\u4EF6
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
