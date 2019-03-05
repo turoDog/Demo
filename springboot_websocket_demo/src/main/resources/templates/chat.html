@@ -13,15 +13,15 @@
     聊天室
 </p>
 
-<form id="wiselyForm">
+<form id="nasusFrom">
     <textarea rows="4" cols="60" name="text"></textarea>
     <input type="submit"/>
 </form>
 
 <script th:inline="javascript">
-    $('#wiselyForm').submit(function(e){
+    $('#nasusFrom').submit(function(e){
         e.preventDefault();
-        var text = $('#wiselyForm').find('textarea[name="text"]').val();
+        var text = $('#nasusFrom').find('textarea[name="text"]').val();
         sendSpittle(text);
     });
 
@@ -42,6 +42,7 @@
     }
 
     function sendSpittle(text) {
+        // 通过 stompClient.send 向 /chat 目标发送信息，对应控制器 @MessageMapping 中的定义
         stomp.send("/chat", {}, text);//3
     }
     $('#stop').click(function() {sock.close()});

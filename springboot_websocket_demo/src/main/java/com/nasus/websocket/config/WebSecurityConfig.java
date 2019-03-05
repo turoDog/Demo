@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * Project Name:websocket <br/>
@@ -20,6 +21,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * Copyright (c) 2019 =======================================================
  */
 @Configuration
+// 开启Spring Security的功能
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
@@ -44,10 +46,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            // 再内存中分配两个用户 nasus 和 chenzy ，用户名和密码一致
-            .withUser("nasus").password("nasus").roles("USER")
+            // 在内存中分配两个用户 nasus 和 chenzy ，用户名和密码一致
+            // BCryptPasswordEncoder() 是 Spring security 5.0 中新增的加密方式
+            // 登陆时用 BCrypt 加密方式对用户密码进行处理。
+            .passwordEncoder(new BCryptPasswordEncoder())
+            .withUser("nasus")
+            // 保证用户登录时使用 bcrypt 对密码进行处理再与内存中的密码比对
+            .password(new BCryptPasswordEncoder().encode("nasus")).roles("USER")
             .and()
-            .withUser("chenzy").password("chenzy").roles("USER");
+            // 登陆时用 BCrypt 加密方式对用户密码进行处理。
+            .passwordEncoder(new BCryptPasswordEncoder())
+            .withUser("chenzy")
+            // 保证用户登录时使用 bcrypt 对密码进行处理再与内存中的密码比对
+            .password(new BCryptPasswordEncoder().encode("chenzy")).roles("USER");
     }
 
     @Override
