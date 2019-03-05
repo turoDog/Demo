@@ -23,4 +23,14 @@ public class ViewController {
         return "nasus";
     }
 
+    @GetMapping("/login")
+    public String getLoginView(){
+        return "login";
+    }
+
+    @GetMapping("/chat")
+    public String getChatView(){
+        return "chat";
+    }
+
 }
