@@ -1,0 +1,9 @@
+student:
+  first_name: 陈
+  lastName: 一个优秀的废人
+  age: 24
+  gender: 男
+  city: 广州
+  teacher: {name: eses,age: 24,gender: 女}
+  hobbys: [篮球,羽毛球,兵兵球]
+  scores: {java: 100,Python: 99,C++: 99}
