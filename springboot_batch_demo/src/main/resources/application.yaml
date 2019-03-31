@@ -1,0 +1,16 @@
+spring:
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=true
+    username: root
+    password: 123456
+
+  batch:
+    job:
+      enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update   #ddl-auto:设为 create 表示每次都重新建表
+    show-sql: true
