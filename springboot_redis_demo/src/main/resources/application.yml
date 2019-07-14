@@ -1,0 +1,32 @@
+spring:
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=true
+    username: root
+    password: 123456
+
+  jpa:
+    hibernate:
+      ddl-auto: update   #ddl-auto:设为 create 表示每次都重新建表
+    show-sql: true
+
+  redis:
+    host: localhost
+    port: 6379
+    # Redis数据库索引（默认为0）
+    database: 1
+    jedis:
+      pool:
+        #连接池最大连接数
+        max-active: 8
+        #最小空闲连接
+        min-idle: 0
+        #最大阻塞等待时间，负值表示没有限制
+        max-wait: -1ms
+        #最大空闲连接
+        max-idle: 8
+    #连接超时时间(毫秒)
+    timeout: 20ms
+    # 无密码可不写
+    # password:
