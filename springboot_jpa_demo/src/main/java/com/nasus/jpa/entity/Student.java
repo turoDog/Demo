@@ -25,6 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Student {
 
+    // test gitmoji
     // 自增 id
     @Id
     @GeneratedValue
