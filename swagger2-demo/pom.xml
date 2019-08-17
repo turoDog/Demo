@@ -11,7 +11,7 @@
     <groupId>com.nasus</groupId>
     <artifactId>swagger2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>swagger2</name>
+    <name>springboot_swagger2_demo</name>
     <description>Demo project for Swagger2</description>
 
     <properties>
